@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'medical.ui'
+# Form implementation generated from reading ui file 'mainWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -15,116 +15,149 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("background-color: #1B262C")
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 20, 781, 561))
+        self.tabWidget.setGeometry(QtCore.QRect(0, 80, 801, 521))
         self.tabWidget.setStyleSheet("QTabWidget {\n"
-"    \n"
-"    font: 25 18pt \"Calibri Light\";\n"
+"    font: 25 16pt \"Calibri Light\" bold;\n"
 "}\n"
-"")
+"\n"
+"QTabBar::tab::selected {\n"
+"    background-color: #3282B8;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QTabBar::tab {\n"
+"    background-color: #BBE1FA\n"
+"}\n"
+"\n"
+"QTabWidget::pane {\n"
+"    border: none;\n"
+"}")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
         self.tabWidget.setIconSize(QtCore.QSize(40, 40))
         self.tabWidget.setObjectName("tabWidget")
         self.homeTab = QtWidgets.QWidget()
         self.homeTab.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.homeTab.setStyleSheet("background-color: #3282B8")
         self.homeTab.setObjectName("homeTab")
+        self.label_2 = QtWidgets.QLabel(self.homeTab)
+        self.label_2.setGeometry(QtCore.QRect(80, 60, 431, 121))
+        self.label_2.setStyleSheet("font: 25 26pt \"Calibri Light\";")
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.homeTab)
+        self.label_3.setGeometry(QtCore.QRect(80, 170, 201, 51))
+        self.label_3.setStyleSheet("font: 25 18pt \"Calibri Light\";")
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.homeTab)
+        self.label_4.setGeometry(QtCore.QRect(90, 250, 131, 41))
+        self.label_4.setStyleSheet("font: 25 18pt \"Calibri Light\";")
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.homeTab)
+        self.label_5.setGeometry(QtCore.QRect(90, 290, 131, 41))
+        self.label_5.setStyleSheet("font: 25 18pt \"Calibri Light\";")
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(self.homeTab)
+        self.label_6.setGeometry(QtCore.QRect(90, 330, 161, 41))
+        self.label_6.setStyleSheet("font: 25 18pt \"Calibri Light\";")
+        self.label_6.setObjectName("label_6")
         self.tabWidget.addTab(self.homeTab, "")
         self.drugsTab = QtWidgets.QWidget()
+        self.drugsTab.setStyleSheet("QWidget {\n"
+"    background-color: #3282B8\n"
+"}\n"
+"QPushButton {\n"
+"    background-color: #BBE1FA\n"
+"}")
         self.drugsTab.setObjectName("drugsTab")
         self.tableView = QtWidgets.QTableView(self.drugsTab)
-        self.tableView.setGeometry(QtCore.QRect(10, 211, 751, 291))
+        self.tableView.setGeometry(QtCore.QRect(20, 90, 761, 381))
+        self.tableView.setStyleSheet("background-color: white;")
         self.tableView.setObjectName("tableView")
-        self.lineEdit = QtWidgets.QLineEdit(self.drugsTab)
-        self.lineEdit.setGeometry(QtCore.QRect(60, 30, 113, 20))
-        self.lineEdit.setStyleSheet("QLineEdit {\n"
+        self.addDrugButton = QtWidgets.QPushButton(self.drugsTab)
+        self.addDrugButton.setGeometry(QtCore.QRect(20, 20, 111, 31))
+        self.addDrugButton.setObjectName("addDrugButton")
+        self.drugSearchBar = QtWidgets.QLineEdit(self.drugsTab)
+        self.drugSearchBar.setGeometry(QtCore.QRect(190, 20, 211, 31))
+        self.drugSearchBar.setStyleSheet("QLineEdit {\n"
+"    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 5px;\n"
 "}")
-        self.lineEdit.setObjectName("lineEdit")
-        self.label = QtWidgets.QLabel(self.drugsTab)
-        self.label.setGeometry(QtCore.QRect(60, 10, 111, 16))
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self.drugsTab)
-        self.label_2.setGeometry(QtCore.QRect(60, 60, 111, 16))
-        self.label_2.setObjectName("label_2")
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.drugsTab)
-        self.lineEdit_2.setGeometry(QtCore.QRect(60, 80, 113, 20))
-        self.lineEdit_2.setStyleSheet("QLineEdit {\n"
-"    border: 1px solid black;\n"
-"    border-radius: 5px;\n"
-"}")
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.label_3 = QtWidgets.QLabel(self.drugsTab)
-        self.label_3.setGeometry(QtCore.QRect(240, 10, 111, 16))
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(self.drugsTab)
-        self.label_4.setGeometry(QtCore.QRect(240, 60, 111, 16))
-        self.label_4.setObjectName("label_4")
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.drugsTab)
-        self.lineEdit_3.setGeometry(QtCore.QRect(240, 30, 113, 20))
-        self.lineEdit_3.setStyleSheet("QLineEdit {\n"
-"    border: 1px solid black;\n"
-"    border-radius: 5px;\n"
-"}")
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.lineEdit_4 = QtWidgets.QLineEdit(self.drugsTab)
-        self.lineEdit_4.setGeometry(QtCore.QRect(240, 80, 113, 20))
-        self.lineEdit_4.setStyleSheet("QLineEdit {\n"
-"    border: 1px solid black;\n"
-"    border-radius: 5px;\n"
-"}")
-        self.lineEdit_4.setObjectName("lineEdit_4")
-        self.label_5 = QtWidgets.QLabel(self.drugsTab)
-        self.label_5.setGeometry(QtCore.QRect(430, 10, 111, 16))
-        self.label_5.setObjectName("label_5")
-        self.textEdit = QtWidgets.QTextEdit(self.drugsTab)
-        self.textEdit.setGeometry(QtCore.QRect(430, 30, 311, 151))
-        self.textEdit.setStyleSheet("QTextEdit {\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"}")
-        self.textEdit.setObjectName("textEdit")
-        self.buttonBox = QtWidgets.QDialogButtonBox(self.drugsTab)
-        self.buttonBox.setGeometry(QtCore.QRect(60, 120, 156, 23))
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
+        self.drugSearchBar.setObjectName("drugSearchBar")
+        self.drugSearchButton = QtWidgets.QPushButton(self.drugsTab)
+        self.drugSearchButton.setGeometry(QtCore.QRect(410, 20, 111, 31))
+        self.drugSearchButton.setObjectName("drugSearchButton")
         self.tabWidget.addTab(self.drugsTab, "")
         self.patientsTab = QtWidgets.QWidget()
+        self.patientsTab.setStyleSheet("QWidget {\n"
+"    background-color: #3282B8\n"
+"}\n"
+"QPushButton {\n"
+"    background-color: #BBE1FA\n"
+"}")
         self.patientsTab.setObjectName("patientsTab")
         self.tableView_2 = QtWidgets.QTableView(self.patientsTab)
-        self.tableView_2.setGeometry(QtCore.QRect(10, 210, 751, 291))
+        self.tableView_2.setGeometry(QtCore.QRect(20, 90, 761, 381))
+        self.tableView_2.setStyleSheet("background-color: white;")
         self.tableView_2.setObjectName("tableView_2")
         self.addPatientButton = QtWidgets.QPushButton(self.patientsTab)
-        self.addPatientButton.setGeometry(QtCore.QRect(200, 50, 121, 41))
+        self.addPatientButton.setGeometry(QtCore.QRect(20, 20, 121, 31))
         self.addPatientButton.setObjectName("addPatientButton")
+        self.patientSearchBar = QtWidgets.QLineEdit(self.patientsTab)
+        self.patientSearchBar.setGeometry(QtCore.QRect(190, 20, 211, 31))
+        self.patientSearchBar.setStyleSheet("QLineEdit {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 5px;\n"
+"}")
+        self.patientSearchBar.setObjectName("patientSearchBar")
+        self.patientSearchButton = QtWidgets.QPushButton(self.patientsTab)
+        self.patientSearchButton.setGeometry(QtCore.QRect(410, 20, 111, 31))
+        self.patientSearchButton.setObjectName("patientSearchButton")
         self.tabWidget.addTab(self.patientsTab, "")
         self.prescriptionsTab = QtWidgets.QWidget()
+        self.prescriptionsTab.setStyleSheet("QWidget {\n"
+"    background-color: #3282B8\n"
+"}\n"
+"QPushButton {\n"
+"    background-color: #BBE1FA\n"
+"}")
         self.prescriptionsTab.setObjectName("prescriptionsTab")
         self.tableView_3 = QtWidgets.QTableView(self.prescriptionsTab)
-        self.tableView_3.setGeometry(QtCore.QRect(10, 210, 751, 291))
+        self.tableView_3.setGeometry(QtCore.QRect(20, 90, 761, 381))
+        self.tableView_3.setStyleSheet("background-color: white;")
         self.tableView_3.setObjectName("tableView_3")
         self.tabWidget.addTab(self.prescriptionsTab, "")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(0, 0, 801, 111))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("images/ecg_banner.jpg"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.label.raise_()
+        self.tabWidget.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label_2.setText(_translate("MainWindow", "Welcome to my Medical App!"))
+        self.label_3.setText(_translate("MainWindow", "There are currently:"))
+        self.label_4.setText(_translate("MainWindow", "0 Drugs"))
+        self.label_5.setText(_translate("MainWindow", "0 Patients"))
+        self.label_6.setText(_translate("MainWindow", "In the database"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.homeTab), _translate("MainWindow", "Home"))
-        self.label.setText(_translate("MainWindow", "Drug Name:"))
-        self.label_2.setText(_translate("MainWindow", "Time to Peak:"))
-        self.label_3.setText(_translate("MainWindow", "Drug Strength:"))
-        self.label_4.setText(_translate("MainWindow", "Drug Duration:"))
-        self.label_5.setText(_translate("MainWindow", "Notes:"))
+        self.addDrugButton.setText(_translate("MainWindow", "Add Drug"))
+        self.drugSearchButton.setText(_translate("MainWindow", "Search"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.drugsTab), _translate("MainWindow", "Drugs"))
         self.addPatientButton.setText(_translate("MainWindow", "Add Patient"))
+        self.patientSearchButton.setText(_translate("MainWindow", "Search"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.patientsTab), _translate("MainWindow", "Patients"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.prescriptionsTab), _translate("MainWindow", "Prescriptions"))
 
