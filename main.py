@@ -1,6 +1,6 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtSql
 #from PyQt5.QtWidgets import QApplication, QMainWindow
-import mainWindow, addPatient, addDrug
+import mainWindow, addPatient, addDrug, dbManager
 import sys
 
 # Initiliaze the main window and setup buttons for adding patients and drugs
@@ -11,6 +11,8 @@ class MainWindow(QtWidgets.QMainWindow, mainWindow.Ui_MainWindow):
         self.setWindowTitle("My Medical App")
         self.addPatientButton.clicked.connect(self.on_addPatient_clicked)
         self.addDrugButton.clicked.connect(self.on_addDrug_clicked)
+        dbManager.updateView(self.tableView_2)
+        
         
     def on_addPatient_clicked(self):
         self.w = AddPatientWindow()
@@ -19,6 +21,8 @@ class MainWindow(QtWidgets.QMainWindow, mainWindow.Ui_MainWindow):
     def on_addDrug_clicked(self):
         self.w = AddDrugWindow()
         self.w.show()
+
+    
     
 
 # Set up the window for adding a patient
@@ -53,6 +57,8 @@ class AddDrugWindow(QtWidgets.QMainWindow, addDrug.Ui_NewDrugWindow):
     def on_addDrug_cancel(self):
         print("Drug not added.")
         self.close()
+
+
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
