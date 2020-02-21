@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(799, 602)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("background-color: #1B262C")
         self.centralwidget.setObjectName("centralwidget")
@@ -36,7 +36,7 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "}")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
-        self.tabWidget.setIconSize(QtCore.QSize(40, 40))
+        self.tabWidget.setIconSize(QtCore.QSize(70, 70))
         self.tabWidget.setObjectName("tabWidget")
         self.homeTab = QtWidgets.QWidget()
         self.homeTab.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -89,6 +89,17 @@ class Ui_MainWindow(object):
         self.drugSearchButton = QtWidgets.QPushButton(self.drugsTab)
         self.drugSearchButton.setGeometry(QtCore.QRect(410, 20, 111, 31))
         self.drugSearchButton.setObjectName("drugSearchButton")
+        self.remDrugButton = QtWidgets.QPushButton(self.drugsTab)
+        self.remDrugButton.setGeometry(QtCore.QRect(570, 20, 111, 31))
+        self.remDrugButton.setObjectName("remDrugButton")
+        self.drugRefresh = QtWidgets.QPushButton(self.drugsTab)
+        self.drugRefresh.setGeometry(QtCore.QRect(730, 20, 41, 41))
+        self.drugRefresh.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("images/refresh_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.drugRefresh.setIcon(icon)
+        self.drugRefresh.setIconSize(QtCore.QSize(30, 30))
+        self.drugRefresh.setObjectName("drugRefresh")
         self.tabWidget.addTab(self.drugsTab, "")
         self.patientsTab = QtWidgets.QWidget()
         self.patientsTab.setStyleSheet("QWidget {\n"
@@ -116,6 +127,15 @@ class Ui_MainWindow(object):
         self.patientSearchButton = QtWidgets.QPushButton(self.patientsTab)
         self.patientSearchButton.setGeometry(QtCore.QRect(410, 20, 111, 31))
         self.patientSearchButton.setObjectName("patientSearchButton")
+        self.remPatientButton = QtWidgets.QPushButton(self.patientsTab)
+        self.remPatientButton.setGeometry(QtCore.QRect(570, 20, 111, 31))
+        self.remPatientButton.setObjectName("remPatientButton")
+        self.patientRefresh = QtWidgets.QPushButton(self.patientsTab)
+        self.patientRefresh.setGeometry(QtCore.QRect(730, 20, 41, 41))
+        self.patientRefresh.setText("")
+        self.patientRefresh.setIcon(icon)
+        self.patientRefresh.setIconSize(QtCore.QSize(30, 30))
+        self.patientRefresh.setObjectName("patientRefresh")
         self.tabWidget.addTab(self.patientsTab, "")
         self.prescriptionsTab = QtWidgets.QWidget()
         self.prescriptionsTab.setStyleSheet("QWidget {\n"
@@ -141,7 +161,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -155,9 +175,11 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.homeTab), _translate("MainWindow", "Home"))
         self.addDrugButton.setText(_translate("MainWindow", "Add Drug"))
         self.drugSearchButton.setText(_translate("MainWindow", "Search"))
+        self.remDrugButton.setText(_translate("MainWindow", "Remove Drug"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.drugsTab), _translate("MainWindow", "Drugs"))
         self.addPatientButton.setText(_translate("MainWindow", "Add Patient"))
         self.patientSearchButton.setText(_translate("MainWindow", "Search"))
+        self.remPatientButton.setText(_translate("MainWindow", "Remove Patient"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.patientsTab), _translate("MainWindow", "Patients"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.prescriptionsTab), _translate("MainWindow", "Prescriptions"))
 

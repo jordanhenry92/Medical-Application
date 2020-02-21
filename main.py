@@ -1,5 +1,4 @@
 from PyQt5 import QtWidgets, QtSql
-#from PyQt5.QtWidgets import QApplication, QMainWindow
 import mainWindow, addPatient, addDrug, dbManager
 import sys
 
@@ -9,21 +8,49 @@ class MainWindow(QtWidgets.QMainWindow, mainWindow.Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("My Medical App")
+
+        # Add all buttons in main window
         self.addPatientButton.clicked.connect(self.on_addPatient_clicked)
         self.addDrugButton.clicked.connect(self.on_addDrug_clicked)
-        dbManager.updateView(self.tableView_2)
+        self.remPatientButton.clicked.connect(self.on_remove_patient_clicked)
+        self.remDrugButton.clicked.connect(self.on_remove_drug_clicked)
+        self.drugRefresh.clicked.connect(self.refreshDrugsTable)
+        self.patientRefresh.clicked.connect(self.refreshPatientsTable)
+
+        # Update tableviews on initialization
+        dbManager.updateDrugsView(self.tableView)
+        dbManager.updatePatientsView(self.tableView_2)
+
+        #self.prescriptionsTab.hide()
         
-        
+    # Opens the interface to add a patient  
     def on_addPatient_clicked(self):
         self.w = AddPatientWindow()
         self.w.show()
 
+    # Opens the interface to add a drug
     def on_addDrug_clicked(self):
         self.w = AddDrugWindow()
         self.w.show()
 
-    
-    
+    # Function to remove patient from table by id number
+    def on_remove_patient_clicked(self):
+        id = self.patientSearchBar.text()
+        dbManager.removePatient(id)
+        dbManager.updatePatientsView(self.tableView_2)
+
+    # Function to remove drug from table by drug identification number (din)
+    def on_remove_drug_clicked(self):
+        din = self.drugSearchBar.text()
+        dbManager.removeDrug(din)
+        dbManager.updateDrugsView(self.tableView)
+
+    def refreshDrugsTable(self):
+        dbManager.updateDrugsView(self.tableView)
+
+    def refreshPatientsTable(self):
+        dbManager.updatePatientsView(self.tableView_2)
+
 
 # Set up the window for adding a patient
 class AddPatientWindow(QtWidgets.QMainWindow, addPatient.Ui_NewPatientWindow):
@@ -34,7 +61,24 @@ class AddPatientWindow(QtWidgets.QMainWindow, addPatient.Ui_NewPatientWindow):
         self.buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(self.on_addPatient_cancel)
     
     def on_addPatient_confirm(self):
-        print("Patient successfully added!")
+        # Get user input from form
+        pid = self.pIDLine.text()
+        fname = self.pFirstLine.text()
+        lname = self.pLastLine.text()
+        dob = self.pDOBLine.text()
+        phone = self.pPhoneLine.text()
+        province = self.pProvinceBox.currentText()
+        email = self.pEmailLine.text()
+        city = self.pCityLine.text()
+        address = self.pAddressLine.text()
+
+        # Check for any blank form entries
+        if pid == "" or fname == "" or lname == "" or dob == "" or phone == "" or email == "" or city == "" or address =="":
+            QtWidgets.QMessageBox.about(self, "Error", "Please fill out the information fully!")
+        else:
+            dbManager.addPatient(pid, fname, lname, dob, phone, province, email, city, address)
+            print("Patient successfully added!")
+        
         self.close()
 
     def on_addPatient_cancel(self):
@@ -51,7 +95,22 @@ class AddDrugWindow(QtWidgets.QMainWindow, addDrug.Ui_NewDrugWindow):
         self.buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(self.on_addDrug_cancel)
 
     def on_addDrug_confirm(self):
-        print("Drug successfully added!")
+
+        # Get user input from form
+        din = self.dinLine.text()
+        name = self.dNameLine.text()
+        drugclass = self.dClassLine.text()
+        admin = self.dAdminLine.text()
+        ingredients = self.dIngredBox.currentText()
+        dosage = self.dDosageLine.text()
+
+        # Check for any blank form entries
+        if din == "" or name == "" or drugclass == "" or admin == "" or dosage == "":
+            QtWidgets.QMessageBox.about(self, "Error", "Please fill out the information fully!")
+        else:
+            dbManager.addDrug(din, name, drugclass, admin, ingredients, dosage)
+            print("Drug successfully added!")
+        
         self.close()
 
     def on_addDrug_cancel(self):

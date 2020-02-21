@@ -48,12 +48,12 @@ QTabWidget::pane {
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
-      <width>40</width>
-      <height>40</height>
+      <width>70</width>
+      <height>70</height>
      </size>
     </property>
     <widget class="QWidget" name="homeTab">
@@ -215,6 +215,42 @@ QPushButton {
        <string>Search</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="remDrugButton">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>20</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remove Drug</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="drugRefresh">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>20</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/refresh_icon.png</normaloff>images/refresh_icon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="patientsTab">
      <property name="styleSheet">
@@ -282,6 +318,42 @@ QPushButton {
       </property>
       <property name="text">
        <string>Search</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="remPatientButton">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>20</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remove Patient</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="patientRefresh">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>20</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/refresh_icon.png</normaloff>images/refresh_icon.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
       </property>
      </widget>
     </widget>
