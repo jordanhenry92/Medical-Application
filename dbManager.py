@@ -108,6 +108,17 @@ def addPatient(pid, fname, lname, dob, phone, province, email, city, address):
 
     db.close()
 
+def searchDrugs(search):
+    db = QtSql.QSqlDatabase.addDatabase("QSQLITE")
+    db.setDatabaseName("db/medical.db")
+    db.open()
+
+    query = QtSql.QSqlQuery()
+    query.prepare("SELECT * FROM drugs WHERE DIN like '%?%' or name like '%?%' or class like '%?%' or administration like '%?%' or num_active_ingredients like '%?%' or dosage_from like '%?%'")
+    query.addBindValue(search)
+    query.exec()
+
+    db.close()
 
 if __name__ == "__main__":
     app = QtCore.QCoreApplication(sys.argv)

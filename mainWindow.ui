@@ -159,7 +159,7 @@ QPushButton {
      <attribute name="title">
       <string>Drugs</string>
      </attribute>
-     <widget class="QTableView" name="tableView">
+     <widget class="QTableView" name="drugsTable">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -170,6 +170,9 @@ QPushButton {
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: white;</string>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="addDrugButton">
@@ -264,7 +267,7 @@ QPushButton {
      <attribute name="title">
       <string>Patients</string>
      </attribute>
-     <widget class="QTableView" name="tableView_2">
+     <widget class="QTableView" name="patientsTable">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -275,6 +278,9 @@ QPushButton {
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: white;</string>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="addPatientButton">

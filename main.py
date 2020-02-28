@@ -16,10 +16,11 @@ class MainWindow(QtWidgets.QMainWindow, mainWindow.Ui_MainWindow):
         self.remDrugButton.clicked.connect(self.on_remove_drug_clicked)
         self.drugRefresh.clicked.connect(self.refreshDrugsTable)
         self.patientRefresh.clicked.connect(self.refreshPatientsTable)
+        self.drugSearchButton.clicked.connect(self.searchDrugs)
 
         # Update tableviews on initialization
-        dbManager.updateDrugsView(self.tableView)
-        dbManager.updatePatientsView(self.tableView_2)
+        dbManager.updateDrugsView(self.drugsTable)
+        dbManager.updatePatientsView(self.patientsTable)
 
         #self.prescriptionsTab.hide()
         
@@ -35,21 +36,28 @@ class MainWindow(QtWidgets.QMainWindow, mainWindow.Ui_MainWindow):
 
     # Function to remove patient from table by id number
     def on_remove_patient_clicked(self):
-        id = self.patientSearchBar.text()
-        dbManager.removePatient(id)
-        dbManager.updatePatientsView(self.tableView_2)
+        index = self.patientsTable.selectionModel().currentIndex()
+        currID = index.sibling(index.row(), 0).data()
+        dbManager.removePatient(currID)
+        dbManager.updatePatientsView(self.patientsTable)
 
     # Function to remove drug from table by drug identification number (din)
     def on_remove_drug_clicked(self):
-        din = self.drugSearchBar.text()
-        dbManager.removeDrug(din)
-        dbManager.updateDrugsView(self.tableView)
+        index = self.drugsTable.selectionModel().currentIndex()
+        currID = index.sibling(index.row(), 0).data()
+        dbManager.removeDrug(currID)
+        dbManager.updateDrugsView(self.drugsTable)
 
     def refreshDrugsTable(self):
-        dbManager.updateDrugsView(self.tableView)
+        dbManager.updateDrugsView(self.drugsTable)
 
     def refreshPatientsTable(self):
-        dbManager.updatePatientsView(self.tableView_2)
+        dbManager.updatePatientsView(self.patientsTable)
+
+    def searchDrugs(self):
+        search = self.drugSearchBar.text()
+        dbManager.searchDrugs(search)
+
 
 
 # Set up the window for adding a patient
@@ -66,8 +74,8 @@ class AddPatientWindow(QtWidgets.QMainWindow, addPatient.Ui_NewPatientWindow):
         fname = self.pFirstLine.text()
         lname = self.pLastLine.text()
         dob = self.pDOBLine.text()
-        phone = self.pPhoneLine.text()
         province = self.pProvinceBox.currentText()
+        phone = self.pPhoneLine.text()
         email = self.pEmailLine.text()
         city = self.pCityLine.text()
         address = self.pAddressLine.text()
@@ -76,7 +84,7 @@ class AddPatientWindow(QtWidgets.QMainWindow, addPatient.Ui_NewPatientWindow):
         if pid == "" or fname == "" or lname == "" or dob == "" or phone == "" or email == "" or city == "" or address =="":
             QtWidgets.QMessageBox.about(self, "Error", "Please fill out the information fully!")
         else:
-            dbManager.addPatient(pid, fname, lname, dob, phone, province, email, city, address)
+            dbManager.addPatient(pid, fname, lname, dob, phone, email, province, city, address)
             print("Patient successfully added!")
         
         self.close()
